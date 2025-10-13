@@ -35,7 +35,7 @@ export const config = {
     }
   ],
   runner: 'local',
-  specs: ['./test/specs/*.spec.js'],
+  specs: ['./test/specs/*.js'],
   exclude: [],
   logLevel: 'info',
   bail: 0,
