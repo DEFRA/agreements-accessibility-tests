@@ -16,7 +16,14 @@
   "scripts": {
     "clean": "rm -rf reports",
     "test": "npm run clean && wdio run wdio.conf.js",
-    "test:local": "npm run clean && wdio run wdio.local.conf.js"
+    "test:local": "npm run clean && wdio run wdio.local.conf.js",
+    "format": "prettier --write 'test/**/*.js' '**/*.{js,md,json,config.js}'",
+    "format:check": "prettier --check 'test/**/*.js' '**/*.{js,md,json,config.js}'",
+    "git:pre-commit-hook": "npm run format:check && npm run lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "postinstall": "npm run setup:husky",
+    "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module",
   },
   "devDependencies": {
     "@faker-js/faker": "10.0.0",
