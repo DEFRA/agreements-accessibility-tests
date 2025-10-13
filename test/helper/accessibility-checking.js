@@ -35,7 +35,9 @@ export function generateAccessibilityReports(filePrefix) {
 
 export function generateAccessibilityReportIndex() {
   if (!fs.existsSync(reportDirectory)) {
-    console.warn(`⚠️ Report directory not found: ${reportDirectory}. Creating one...`)
+    console.warn(
+      `⚠️ Report directory not found: ${reportDirectory}. Creating one...`
+    )
     fs.mkdirSync(reportDirectory, { recursive: true })
   }
 
