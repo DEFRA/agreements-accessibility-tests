@@ -1883,7 +1883,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 s = u
               }
               if (((u = s), (s = null), typeof u === 'function')) {
-                (c = u), (u = null), c()
+                ;(c = u), (u = null), c()
                 return
               }
               for (o.data = l = ++l % 2; u; )
@@ -1894,7 +1894,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 typeof s === 'function' ? (s = [s, c]) : s.push(c)
                 return
               }
-              (s = c), (o.data = l = ++l % 2)
+              ;(s = c), (o.data = l = ++l % 2)
             }
           )
         }
@@ -1965,7 +1965,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   (v = null)
                 return
               }
-              (_ = v),
+              ;(_ = v),
                 (A = w),
                 (C = D),
                 (v = w = D = null),
@@ -2152,7 +2152,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               ;(d[m] = w), l.emit('setasync', m, 1)
               return
             }
-            (c[m] = 1), (p[m] = w)
+            ;(c[m] = 1), (p[m] = w)
             const x = function (k) {
               const O = c[m]
               if (D)
@@ -2560,7 +2560,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
           }
           return '"' + u + '"'
         }
-        (e.escapeStr = i),
+        ;(e.escapeStr = i),
           (e.identSpecialChars = {
             '!': !0,
             '"': !0,
@@ -2771,7 +2771,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
                     throw Error('Expected "]" but "' + c + '" found.')
                   n++, (A.value = F)
                 }
-                (_ = _ || {}), (_.attrs = _.attrs || []).push(A)
+                ;(_ = _ || {}), (_.attrs = _.attrs || []).push(A)
               } else if (c === ':') {
                 n++
                 const k = p()
@@ -2800,7 +2800,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
                     throw Error('Expected ")" but "' + c + '" found.')
                   n++, (O.value = q)
                 }
-                (_ = _ || {}), (_.pseudos = _.pseudos || []).push(O)
+                ;(_ = _ || {}), (_.pseudos = _.pseudos || []).push(O)
               } else break
             return _
           }
@@ -2901,7 +2901,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
         const r = qv()
         const a = (function () {
           function n() {
-            (this.pseudos = {}),
+            ;(this.pseudos = {}),
               (this.attrEqualityMods = {}),
               (this.ruleNestingOperators = {}),
               (this.substitutesEnabled = !1)
@@ -3298,7 +3298,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
           }
           const lt = (function () {
             function R(B, z) {
-              (this._instanceConstructor = B),
+              ;(this._instanceConstructor = B),
                 (this.promise = new B(Y)),
                 this.promise[W] || Le(this.promise),
                 i(z)
@@ -3328,7 +3328,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
                   try {
                     rt = z.then
                   } catch (Hu) {
-                    (eo = !0), (Aa = Hu)
+                    ;(eo = !0), (Aa = Hu)
                   }
                   if (rt === I && z._state !== oe)
                     this._settledAt(z._state, re, z._result)
@@ -3708,7 +3708,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
         function ne(T) {
           return oe(T, 8, 23)
         }
-        (function () {
+        ;(function () {
           function T(Je) {
             if (((Je = r.ToInt32(Je)), Je < 0))
               throw new RangeError(
@@ -4023,7 +4023,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
                   Le.set(et)
               }
             }
-            (j.prototype.setUint8 = ce(e.Uint8Array)),
+            ;(j.prototype.setUint8 = ce(e.Uint8Array)),
               (j.prototype.setInt8 = ce(e.Int8Array)),
               (j.prototype.setUint16 = ce(e.Uint16Array)),
               (j.prototype.setInt16 = ce(e.Int16Array)),
@@ -5939,7 +5939,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
           function o(s) {
             return s.replace(/\\('|\\)/g, '$1').replace(/[\r\t\n]/g, ' ')
           }
-          (r.template = function (s, u, l) {
+          ;(r.template = function (s, u, l) {
             u = u || r.templateSettings
             const c = u.append ? a.append : a.split
             let d
@@ -13581,7 +13581,7 @@ Consider to rely on 'then' or 'done' mode instead.`)
                   this.add(r, arguments[0][r], arguments[1])
                 return
               }
-              (Array.isArray(r) ? r : [r]).forEach(function (i) {
+              ;(Array.isArray(r) ? r : [r]).forEach(function (i) {
                 ;(this[i] = this[i] || []),
                   a && this[i][n ? 'unshift' : 'push'](a)
               }, this)
@@ -34090,7 +34090,7 @@ See: https://github.com/dequelabs/axe-core/blob/master/doc/context.md`
             }
           }
           const x = function (A) {
-            (b._running = !1), w()
+            ;(b._running = !1), w()
             try {
               d(A)
             } catch (C) {
@@ -40076,14 +40076,14 @@ var aR = (h, f, y, g) => {
     case 'contrast':
     case 'critical':
     case 'serious':
-      (N = `${M} high impact`), (K = 'bg-danger bg-gradient'), (eh += M)
+      ;(N = `${M} high impact`), (K = 'bg-danger bg-gradient'), (eh += M)
       break
     case 'alert':
     case 'moderate':
-      (N = `${M} medium impact`), (K = 'bg-warning'), (th += M)
+      ;(N = `${M} medium impact`), (K = 'bg-warning'), (th += M)
       break
     default:
-      (N = `${M} low impact`), (K = 'bg-success')
+      ;(N = `${M} low impact`), (K = 'bg-success')
       break
   }
   let U = ''
@@ -40320,14 +40320,14 @@ var uR = (h, f, y, g, b, M) => {
       case 'serious':
       case 'error':
       case 'contrast':
-        (wt = 'bg-danger bg-gradient'), (Mt = Ct + ' high impact'), (rh += Ct)
+        ;(wt = 'bg-danger bg-gradient'), (Mt = Ct + ' high impact'), (rh += Ct)
         break
       case 'moderate':
       case 'alert':
-        (wt = 'bg-warning'), (Mt = Ct + ' medium impact'), (ah += Ct)
+        ;(wt = 'bg-warning'), (Mt = Ct + ' medium impact'), (ah += Ct)
         break
       default:
-        (wt = 'bg-success'), (Mt = Ct + ' low impact')
+        ;(wt = 'bg-success'), (Mt = Ct + ' low impact')
         break
     }
     for (const [ur, Dr] of y.entries())
@@ -40436,7 +40436,7 @@ const tl = (h, f, y) => {
   }
 }
 const q6 = async () => {
-  (ct.startDateTime = ka('dd-MM-yyyy HH:mm:ss')),
+  ;(ct.startDateTime = ka('dd-MM-yyyy HH:mm:ss')),
     (ct.jsRuleScript = await Qm(process.cwd() + '/dist/wave.min.js'))
 }
 const j6 = async (h, f) => {
