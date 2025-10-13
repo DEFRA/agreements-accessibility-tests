@@ -1,4 +1,4 @@
-import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
+import { generateAccessibilityReportIndex } from './test/helper/accessibility-checking.js'
 
 export const config = {
   hostname: process.env.CHROMEDRIVER_URL || '127.0.0.1',
