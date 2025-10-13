@@ -14,7 +14,6 @@ const reviewOfferPage = new ReviewOfferPage()
 const acceptYourOfferPage = new AcceptYourOfferPage()
 const offerAcceptedPage = new OfferAcceptedPage()
 describe('Agreement pages', () => {
-  let agreementId
   const sbi = '106284736' // fixed to hardcode sbi for auth verification- faker.string.numeric(10)
   const frn = faker.string.numeric(10)
   const agreementName = 'E2E Agreement Test Farm'
