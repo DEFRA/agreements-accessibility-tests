@@ -281,10 +281,17 @@ export async function setupAgreement({
     'Create agreement request body:',
     JSON.stringify(requestBody, null, 2)
   )
+  const headers = {
+    Accept: 'application/json',
+    'Accept-Encoding': '*'
+  }
+  if (process.env.USER_TOKEN) {
+    headers['x-api-key'] = process.env.USER_TOKEN
+  }
   try {
     const response = await request(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify(requestBody)
     })
     const raw = await response.body.text()

@@ -3,7 +3,7 @@ import { generateAccessibilityReportIndex } from './test/helper/accessibility-ch
 export const config = {
   baseUrl: `https://grants-ui.dev.cdp-int.defra.cloud`,
   testAPIEndPointUrl:
-    'https://farming-grants-agreements-api.dev.cdp-int.defra.cloud',
+    'https://ephemeral-protected.api.dev.cdp-int.defra.cloud/farming-grants-agreements-api',
   proxy: '/agreement',
   maxInstances: 1,
   capabilities: [
