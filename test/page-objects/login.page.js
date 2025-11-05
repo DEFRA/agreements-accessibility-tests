@@ -2,10 +2,9 @@ import { Page } from './page.js'
 import { USERNAME } from '../helper/constants.js'
 
 class LoginPage extends Page {
-  async login(id) {
+  async login() {
     const proxy = `${browser.options.proxy}`
-    const path = id ? `/${id}` : '/SFI123456789'
-    this.open(proxy + path)
+    this.open(proxy)
     const usernameInput = await $('#crn')
     const passwordInput = await $('#password')
     const submitButton = await $('button[type="submit"]')
