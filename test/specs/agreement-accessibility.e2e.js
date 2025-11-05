@@ -28,7 +28,7 @@ describe('Agreement pages', () => {
     })
     console.log(`Created agreement with ID: ${agreementId}`)
     await initialiseAccessibilityChecking()
-    await loginPage.login(agreementId)
+    await loginPage.login()
   })
   it('should analyse accessibility', async () => {
     await analyseAccessibility()
