@@ -18,7 +18,7 @@ class OfferAcceptedPage extends Page {
   }
 
   async clickViewAgreementLink() {
-    const link = await this.getLinkByPartialText('view your full agreement')
+    const link = await this.getLinkByPartialText('view your agreement document')
     await link.click()
   }
 

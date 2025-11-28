@@ -2,275 +2,216 @@ import { request } from 'undici'
 import { randomUUID } from 'crypto'
 import { browser } from '@wdio/globals'
 
-export async function setupAgreement({
-  sbi,
-  frn,
-  agreementName,
-  clientRef,
-  quantity = 1.23
-}) {
+export async function setupAgreement({ sbi, frn, agreementName, clientRef }) {
   const requestBody = {
     id: randomUUID(),
     source: 'fg-gas-backend',
-    specVersion: '1.0',
-    type: 'cloud.defra.test.fg-gas-backend.agreement.create',
+    specversion: '1.0',
     datacontenttype: 'application/json',
+    time: '2025-11-25T15:58:27.496Z',
+    traceparent: 'c335f29d2d4455947fd4047bd3353f67',
+    type: 'cloud.defra.dev.fg-gas-backend.agreement.create',
     data: {
       clientRef,
       code: 'frps-private-beta',
-      createdAt: '2025-08-19T09:36:45.131Z',
-      submittedAt: '2025-08-19T09:36:44.509Z',
       identifiers: {
         sbi,
         frn,
-        crn: '1234567890',
-        defraId: '1234567890'
+        crn: '1102838829  ',
+        defraId: 'defraId'
       },
       answers: {
-        hasCheckedLandIsUpToDate: true,
-        agreementName,
-        scheme: 'SFI',
-        year: 2025,
-        actionApplications: [
-          {
-            code: 'CMOR1',
-            sheetId: 'SD6743',
-            parcelId: '8083',
-            appliedFor: {
-              unit: 'ha',
-              quantity
-            }
-          }
-        ],
-        payment: {
-          agreementStartDate: '2025-09-01',
-          agreementEndDate: '2028-09-01',
-          frequency: 'Quarterly',
-          agreementTotalPence: 96018,
-          annualTotalPence: 32006,
-          parcelItems: {
-            1: {
-              code: 'CMOR1',
-              description:
-                'CMOR1: Assess moorland and produce a written record',
-              version: 1,
-              unit: 'ha',
-              quantity: 4.53411078,
-              rateInPence: 1060,
-              annualPaymentPence: 4806,
-              sheetId: 'SD6743',
-              parcelId: '8083'
-            }
-          },
-          agreementLevelItems: {
-            1: {
-              code: 'CMOR1',
-              description:
-                'CMOR1: Assess moorland and produce a written record',
-              version: 1,
-              annualPaymentPence: 27200
-            }
-          },
-          payments: [
-            {
-              totalPaymentPence: 8007,
-              paymentDate: '2025-12-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2026-03-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2026-06-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2026-09-07',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2026-12-07',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2027-03-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2027-06-07',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2027-09-06',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2027-12-06',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2028-03-06',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2028-06-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            },
-            {
-              totalPaymentPence: 8001,
-              paymentDate: '2028-09-05',
-              lineItems: [
-                {
-                  parcelItemId: 1,
-                  paymentPence: 1201
-                },
-                {
-                  agreementLevelItemId: 1,
-                  paymentPence: 6800
-                }
-              ]
-            }
-          ]
+        rulesCalculations: {
+          id: 2979,
+          message: 'Application validated successfully',
+          valid: true,
+          date: '2025-11-21T10:10:43.673Z'
         },
+        scheme: 'SFI',
         applicant: {
           business: {
-            name: 'J&S Hartley',
+            reference: '1101091126',
             email: {
-              address:
-                'cliffspencetasabbeyfarmf@mrafyebbasatecnepsffilcm.com.test'
+              address: 'texelshirecontractingg@gnitcartnocerihslexeto.com.test'
             },
             phone: {
-              mobile: '01234031670'
+              mobile: '01234816251'
             },
+            name: 'Texels Hire & Contracting',
             address: {
-              line1: 'Mason House Farm Clitheroe Rd',
-              line2: 'Bashall Eaves',
+              line1: 'Benbrigge House',
+              line2: 'ALBRIGHTON',
               line3: null,
               line4: null,
               line5: null,
-              street: 'Bartindale Road',
-              city: 'Clitheroe',
-              postalCode: 'BB7 3DD'
+              street: 'BRIDGE ROAD',
+              city: 'GRIMSBY',
+              postalCode: 'DY13 0UY'
             }
           },
           customer: {
             name: {
-              title: 'Mr.',
-              first: 'Edward',
-              middle: 'Paul',
-              last: 'Jones'
+              title: 'Mr',
+              first: 'Graham',
+              middle: 'Lisa',
+              last: 'Gilfoyle'
             }
           }
+        },
+        totalAnnualPaymentPence: 70284,
+        application: {
+          parcel: [
+            {
+              sheetId: 'SK0971',
+              parcelId: '7555',
+              area: {
+                unit: 'ha',
+                quantity: 5.2182
+              },
+              actions: [
+                {
+                  code: 'CMOR1',
+                  version: 1,
+                  durationYears: 3,
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  }
+                },
+                {
+                  code: 'UPL3',
+                  version: 1,
+                  durationYears: 3,
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  }
+                }
+              ]
+            },
+            {
+              sheetId: 'SK0971',
+              parcelId: '9194',
+              area: {
+                unit: 'ha',
+                quantity: 2.1703
+              },
+              actions: [
+                {
+                  code: 'CMOR1',
+                  version: 1,
+                  durationYears: 3,
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  }
+                },
+                {
+                  code: 'UPL1',
+                  version: 1,
+                  durationYears: 3,
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  }
+                }
+              ]
+            }
+          ],
+          agreement: []
+        },
+        payments: {
+          parcel: [
+            {
+              sheetId: 'SK0971',
+              parcelId: '7555',
+              area: {
+                unit: 'ha',
+                quantity: 5.2182
+              },
+              actions: [
+                {
+                  code: 'CMOR1',
+                  description: 'Assess moorland and produce a written record',
+                  durationYears: 3,
+                  paymentRates: 1060,
+                  annualPaymentPence: 5042,
+                  eligible: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  },
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  }
+                },
+                {
+                  code: 'UPL3',
+                  description: 'Limited livestock grazing on moorland',
+                  durationYears: 3,
+                  paymentRates: 6600,
+                  annualPaymentPence: 31399,
+                  eligible: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  },
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 4.7575
+                  }
+                }
+              ]
+            },
+            {
+              sheetId: 'SK0971',
+              parcelId: '9194',
+              area: {
+                unit: 'ha',
+                quantity: 2.1703
+              },
+              actions: [
+                {
+                  code: 'CMOR1',
+                  description: 'Assess moorland and produce a written record',
+                  durationYears: 3,
+                  paymentRates: 1060,
+                  annualPaymentPence: 2300,
+                  eligible: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  },
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  }
+                },
+                {
+                  code: 'UPL1',
+                  description: 'Moderate livestock grazing on moorland',
+                  durationYears: 3,
+                  paymentRates: 2000,
+                  annualPaymentPence: 4341,
+                  eligible: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  },
+                  appliedFor: {
+                    unit: 'ha',
+                    quantity: 2.1705
+                  }
+                }
+              ]
+            }
+          ],
+          agreement: [
+            {
+              code: 'CMOR1',
+              description: 'Assess moorland and produce a written record',
+              durationYears: 3,
+              paymentRates: 27200,
+              annualPaymentPence: 27200
+            }
+          ]
         }
       }
     }
