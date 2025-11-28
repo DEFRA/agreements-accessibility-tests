@@ -34,6 +34,7 @@ describe('Agreement pages', () => {
     await analyseAccessibility()
     await reviewOfferPage.selectContinue()
     await analyseAccessibility()
+    await acceptYourOfferPage.clickConfirmCheckbox()
     await acceptYourOfferPage.selectAcceptOffer()
     await analyseAccessibility()
     await offerAcceptedPage.clickViewAgreementLink()
