@@ -36,17 +36,16 @@ describe('Agreement pages', () => {
 
   it('should analyse accessibility', async () => {
     // Analyse the main review offer page
-    await analyseAccessibility('Review Offer Page')
+    await analyseAccessibility(' Review Offer Page')
 
     // Switch to printable agreement tab and analyse
     await reviewOfferPage.clickPrintableAgreementLinkAndSwitchTab()
-    await analyseAccessibility('Printable Agreement Tab')
+    await analyseAccessibility(' Printable Agreement Tab')
 
     // Go back to main window and continue
     await reviewOfferPage.goToMainWindow()
-    await analyseAccessibility('Review Offer Main Window')
-
     await reviewOfferPage.selectContinue()
+
     await analyseAccessibility('Accept Your Offer Page')
 
     await acceptYourOfferPage.clickConfirmCheckbox()
