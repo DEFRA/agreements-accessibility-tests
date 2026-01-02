@@ -13,12 +13,31 @@ class OfferAcceptedPage extends Page {
     return await $('p.govuk-body').getText()
   }
 
-  async getViewFullAgreementLink() {
-    return await this.getLinkByPartialText('view your full agreement')
+  // Generic helper for links by partial text
+  async getLinkByPartialText(text) {
+    return await $(`a*=${text}`)
   }
 
-  async clickViewAgreementLink() {
-    const link = await this.getLinkByPartialText('view your agreement document')
+  async getAgreementDocumentLink() {
+    return await this.getLinkByPartialText('agreement document')
+  }
+
+  async getTermsAndConditionsLink() {
+    return await this.getLinkByPartialText(
+      'technical test terms and conditions'
+    )
+  }
+
+  async getTechnicalTestInfoLink() {
+    return await this.getLinkByPartialText('technical test information')
+  }
+
+  async getTechnicalTestActionsLink() {
+    return await this.getLinkByPartialText('technical test actions')
+  }
+
+  async clickAgreementDocumentLink() {
+    const link = await this.getAgreementDocumentLink()
     await link.click()
   }
 

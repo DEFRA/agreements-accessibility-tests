@@ -2,7 +2,7 @@ import { Page } from './page.js'
 import { USERNAME } from '../helper/constants.js'
 
 class LoginPage extends Page {
-  async login() {
+  async login(id) {
     const proxy = `${browser.options.proxy}`
     this.open(proxy)
     const usernameInput = await $('#crn')

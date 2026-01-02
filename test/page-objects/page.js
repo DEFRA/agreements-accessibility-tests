@@ -5,8 +5,24 @@ class Page {
     return $('h1')
   }
 
-  open(path) {
+  async open(path) {
     return browser.url(path)
+  }
+
+  async getFarmName() {
+    return await $(`[data-testid="farmName"]`).getText()
+  }
+
+  async getSBI() {
+    return await $(`[data-testid="sbi"]`).getText()
+  }
+
+  async getFarmerName() {
+    return await $(`[data-testid="farmerName"]`).getText()
+  }
+
+  async getPageHeader() {
+    return await $(`.govuk-heading-xl`).getText()
   }
 
   async getLinkByPartialText(partialText) {
@@ -19,6 +35,20 @@ class Page {
       }
     }
     throw new Error(`Link containing "${partialText}" not found`)
+  }
+
+  get phaseTag() {
+    return $('.govuk-phase-banner__content__tag')
+  }
+
+  get phaseMessage() {
+    return $('.govuk-phase-banner__text')
+  }
+
+  async isBetaBannerPresent() {
+    const tag = await this.phaseTag.getText()
+    const msg = await this.phaseMessage.getText()
+    return tag.includes('Beta') && msg.includes('This is a new service.')
   }
 }
 

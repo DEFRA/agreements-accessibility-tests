@@ -1,10 +1,9 @@
 import { Page } from './page.js'
 
 class ReviewOfferPage extends Page {
-  open(id) {
+  open() {
     const proxy = `${browser.options.proxy}`
-    const path = id ? `/${id}` : '/SFI123456789'
-    return super.open(proxy + path)
+    return super.open(proxy)
   }
 
   async getActionTableRowData(rowIndex) {
@@ -12,11 +11,12 @@ class ReviewOfferPage extends Page {
     const code = await $(`#actionTableCodeRow${rowIndex}`).getText()
     const parcel = await $(`#actionTableLandParcelRow${rowIndex}`).getText()
     const quantity = await $(`#actionTableQuantityRow${rowIndex}`).getText()
+    const duration = await $(`#actionTableDurationRow${rowIndex}`).getText()
 
     console.log(
-      `Row ${rowIndex} - Action: ${action}, Code: ${code}, Parcel: ${parcel}, Quantity: ${quantity}`
+      `Row ${rowIndex} - Action: ${action}, Code: ${code}, Parcel: ${parcel}, Quantity: ${quantity} , Duration: ${duration}`
     )
-    return { action, code, parcel, quantity }
+    return { action, code, parcel, quantity, duration }
   }
 
   async getPaymentsTableRowData(rowIndex) {
@@ -62,7 +62,50 @@ class ReviewOfferPage extends Page {
   }
 
   async selectContinue(selector) {
-    await $('.govuk-button').click()
+    const button = await $('button[value="display-accept"]')
+    await button.click()
+  }
+
+  async checkPostcodePresent() {
+    const text = await $('body').getText()
+    return text.includes('DY14 0UY')
+  }
+
+  async getTermsAndConditionsLink() {
+    return await this.getLinkByPartialText(
+      'Farm payments technical test terms and conditions'
+    )
+  }
+
+  async getTechnicalTestInfoLink() {
+    return await this.getLinkByPartialText(
+      'Farm payments technical test information'
+    )
+  }
+
+  async getTechnicalTestActionsLink() {
+    return await this.getLinkByPartialText(
+      'Farm payments technical test actions'
+    )
+  }
+
+  async getDraftAgreementLink() {
+    return await this.getLinkByPartialText(
+      'View a printable version of your draft agreement (opens in new tab)'
+    )
+  }
+
+  async clickPrintableAgreementLinkAndSwitchTab() {
+    const link = await $('a[href*="/agreement/"][href*="/print"]')
+    await link.click()
+
+    const handles = await browser.getWindowHandles()
+    await browser.switchToWindow(handles[handles.length - 1])
+  }
+
+  async goToMainWindow() {
+    const handles = await browser.getWindowHandles()
+    await browser.switchToWindow(handles[0])
   }
 }
 

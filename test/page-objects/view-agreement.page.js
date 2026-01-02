@@ -7,27 +7,31 @@ class ViewAgreementPage extends Page {
   }
 
   async getAgreementHolder() {
-    return $('dl.dataset-info dt:nth-of-type(1)').getText()
+    return $('dl.dataset-info dd:nth-of-type(1)').getText()
   }
 
   async getSBIValue() {
-    return $('dl.dataset-info dt:nth-of-type(2)').getText()
+    return $('dl.dataset-info dd:nth-of-type(2)').getText()
   }
 
   async getAddress() {
-    return $('dl.dataset-info dt:nth-of-type(3)').getText()
+    return $('dl.dataset-info dd:nth-of-type(3)').getText()
   }
 
   async getAgreementName() {
-    return $('dl.dataset-info dt:nth-of-type(4)').getText()
+    return $('dl.dataset-info dd:nth-of-type(4)').getText()
   }
 
   async getAgreementNumber() {
-    return $('dl.dataset-info dt:nth-of-type(5)').getText()
+    return $('dl.dataset-info dd:nth-of-type(5)').getText()
   }
 
   async getStartDate() {
-    return $('dl.dataset-info dt:nth-of-type(6)').getText()
+    return $('dl.dataset-info dd:nth-of-type(6)').getText()
+  }
+
+  async getEndDate() {
+    return $('dl.dataset-info dd:nth-of-type(7)').getText()
   }
 
   // Sub-headers
@@ -53,6 +57,10 @@ class ViewAgreementPage extends Page {
 
   get scheduleSubHeader() {
     return $('#schedule')
+  }
+
+  get signatureSubHeader() {
+    return $('#signature')
   }
 
   get protectionSubHeader() {
@@ -84,6 +92,10 @@ class ViewAgreementPage extends Page {
     return $('[data-test-id="contentsScheduleLink"] a')
   }
 
+  get contentsSignatureLink() {
+    return $('[data-test-id="contentsSignatureLink"] a')
+  }
+
   get contentsProtectionLink() {
     return $('[data-test-id="contentsProtectionLink"] a')
   }
@@ -92,6 +104,21 @@ class ViewAgreementPage extends Page {
   getTableCell(tableType, rowIndex, columnIndex) {
     return $(
       `table[data-test-id="${tableType}"] tr[data-test-id="${tableType}Row${rowIndex + 1}"] td[data-test-id="${tableType}Cell${columnIndex + 1}_${columnIndex}"]`
+    )
+  }
+
+  getAgreementTableCell(tableType, rowIndex, columnIndex) {
+    return $(
+      `table[data-test-id="${tableType}"]
+      tr[data-test-id="${tableType}Row${rowIndex + 1}"]
+      td[data-test-id="${tableType}Cell${rowIndex + 1}_${columnIndex}"]`
+    )
+  }
+
+  getAgreementDate(labelText) {
+    return $(
+      `//dt[normalize-space()="${labelText}"]
+      /following-sibling::dt[not(contains(normalize-space(), ':'))][1]`
     )
   }
 
@@ -118,6 +145,26 @@ class ViewAgreementPage extends Page {
   // Optional: get data-module attribute
   async getPrintButtonDataModule() {
     return await this.printButton.getAttribute('data-module')
+  }
+
+  async getDefinitionValue(labelText) {
+    const dt = await $(`dl.dataset-info dt=${labelText}`)
+    // Get the next sibling <dt> (the value)
+    return await dt.nextElement().getText()
+  }
+
+  async getStartDateForAgreement() {
+    return await this.getDefinitionValue('Agreement start date:')
+  }
+
+  async getEndDateForAgreement() {
+    return await this.getDefinitionValue('Agreement end date:')
+  }
+
+  getDraftAgreementMessage() {
+    return $(
+      '//div[contains(@class,"govuk-notification-banner__content")]//p[1]'
+    )
   }
 }
 
