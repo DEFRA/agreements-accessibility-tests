@@ -19,6 +19,7 @@ describe('Agreement pages', () => {
   const agreementName = 'E2E Agreement Test Farm'
   const clientRef = 'ref-e2e-001'
   before(async () => {
+    await initialiseAccessibilityChecking()
     // Step 1: Create agreement
     const agreementId = await setupAgreement({
       sbi,
@@ -27,7 +28,6 @@ describe('Agreement pages', () => {
       clientRef
     })
     console.log(`Created agreement with ID: ${agreementId}`)
-    await initialiseAccessibilityChecking()
     await loginPage.login()
   })
   it('should analyse accessibility', async () => {
