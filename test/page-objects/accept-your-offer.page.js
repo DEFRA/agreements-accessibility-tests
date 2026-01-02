@@ -10,15 +10,12 @@ class AcceptYourOfferPage extends Page {
   }
 
   async selectAcceptOffer(selector) {
-    await $('.govuk-button').click()
+    const button = await $('button[id="accept-offer-button"]')
+    await button.click()
   }
 
   async toggleGuidanceDetails() {
     return $('summary=If you need to make an update').click()
-  }
-
-  getConfirmationChecklist() {
-    return $$('ul.govuk-list--bullet li').map((el) => el.getText())
   }
 
   async getGuidanceDetailsText() {
